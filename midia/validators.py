@@ -7,7 +7,7 @@ import unicodedata
 
 
 from django.utils.deconstruct import deconstructible
-from django.utils.encoding import force_text, force_str
+from django.utils.encoding import force_str
 
 
 # 2.5MB - 2621440
@@ -36,7 +36,7 @@ class UploadToPath(object):
         return self.generate_filename(filename)
 
     def get_directory_name(self):
-        return os.path.normpath(force_text(datetime.datetime.now().strftime(force_str(self.upload_to))))
+        return os.path.normpath(force_str(datetime.datetime.now().strftime(force_str(self.upload_to))))
 
     def get_filename(self, filename):
         now = time.time()
