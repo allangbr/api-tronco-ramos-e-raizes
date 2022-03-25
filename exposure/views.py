@@ -31,6 +31,6 @@ class PointsGeoView(APIView):
             'album_audio': album_audio_serializer.data,
             'album_image': album_image_serializer.data,
 
-            })
+        })
 
 
