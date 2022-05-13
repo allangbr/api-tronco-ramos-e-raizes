@@ -4,7 +4,7 @@ from .validators import validate_file_size, UploadToPath
 from .models_abs import AlbumAbs, ModelAbs, Tag
 from user.models import User
 from url_parser import parse_url
-
+from urllib.parse import urlparse
 
 class Document(ModelAbs):
     file = models.FileField("Documento", upload_to=UploadToPath('documents'), validators=[
@@ -58,8 +58,8 @@ class Video(AlbumAbs):
         return self.title
 
     def save(self, *args, **kwargs):
-        link_video = parse_url(self.video_url)
-        self.video_url = link_video['query']['v']
+        link_video = urlparse(self.video_url)
+        self.video_url = link_video.query
         return super(Video, self).save(*args, **kwargs) 
 
 
