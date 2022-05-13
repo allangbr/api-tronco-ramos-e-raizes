@@ -44,7 +44,7 @@ class VideoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Video
-        fields = ("id", "album", 'user', 'videoUrl', 'tags')
+        fields = ("id", "album", 'user', 'video_url', 'tags')
 
     def to_representation(self, instance):
         self.fields['tags'] = TagSerializer(read_only=True, many=True)
@@ -72,7 +72,6 @@ class ImageSerializer(serializers.ModelSerializer):
 
 
 class AlbumImageSerializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source='user.username')
     images = ImageSerializer(many=True, read_only=True)
 
     class Meta:

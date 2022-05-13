@@ -14,7 +14,7 @@ class DocumentAdmin(admin.ModelAdmin):
 
 class VideoInline(admin.TabularInline):
     model = Video
-    fields = ("title", "description", "tags",  "videoUrl", "author", "user",)
+    fields = ("title", "description", "tags",  "video_url", "author", "user",)
     readonly_fields = ('id',)
     extra = 1
 
